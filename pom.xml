@@ -6,7 +6,7 @@
     <groupId>com.khoubyari</groupId>
     <artifactId>spring-boot-rest-example</artifactId>
     <version>0.3.0</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <description>Example project demonstrating REST APIs implemented using Spring Boot, in-memory database, embedded Tomcat, Swagger, JsonPath, Hamcrest and MockMVC</description>
 
     <parent>
@@ -118,8 +118,19 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <finalName>rest-example</finalName>
+                    <mainClass>com.khoubyari.example.Application</mainClass>
+                    <classifier>boot</classifier>
                     <addResources>false</addResources>
+                    <executable>true</executable>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
