@@ -1,6 +1,6 @@
 ### This is the main way to configure the application (other than annotations).
 ### This file is in Yaml format but you can also configure spring boot using the traditional
-### Java properties file format. 
+### Java properties file format.
 
 spring.jmx:
    enabled: false
@@ -35,23 +35,25 @@ info:
     description: ${project.description}
     version: ${project.version}
 
-hotel.service:
-  name: 'default profile:'
 ---
 spring:
-  profiles: test
-  h2:
-    console:
-      enabled: true
+  profiles: mysql
 
-spring.jpa:
-    hibernate.ddl-auto: create-drop
+  datasource:
+    platform: mysql
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://mysql:3306/bootexample
+    username: admin
+    password: admin
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    generate-ddl: true
+
 
 hotel.service:
-  name: 'test profile:'
-  
-logging:
-  file: boot_example.log
-  org.hibernate: INFO
-
- 
+  name: 'mysql profile:'

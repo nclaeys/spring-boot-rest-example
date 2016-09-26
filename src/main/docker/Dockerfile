@@ -8,6 +8,6 @@ WORKDIR /opt
 
 RUN chmod +x rest-example-boot.jar
 
-CMD ["java","-Dspring.profiles.active=test","-jar","rest-example-boot.jar"]
+CMD ["java","-Dspring.profiles.active=mysql","-jar","rest-example-boot.jar"]
 
 EXPOSE 8090 8091
