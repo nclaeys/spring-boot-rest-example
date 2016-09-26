@@ -35,14 +35,25 @@ info:
     description: ${project.description}
     version: ${project.version}
 
-hotel.service:
-  name: 'default profile:'
 ---
 spring:
-  profiles: test
+  profiles: mysql
 
-spring.jpa:
-    hibernate.ddl-auto: create-drop
+  datasource:
+    platform: mysql
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://mysql:3306/bootexample
+    username: admin
+    password: admin
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    generate-ddl: true
+
 
 hotel.service:
-  name: 'test profile:'
+  name: 'mysql profile:'
